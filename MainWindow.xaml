@@ -1,0 +1,151 @@
+﻿<Window x:Class="ScraperGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ScraperGUI" Height="550" Width="450"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+    <!-- BACKGROUND GRADIENT GELAP -->
+    <Border CornerRadius="15">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0F2027" Offset="0.0" />
+                <GradientStop Color="#203A43" Offset="0.5" />
+                <GradientStop Color="#2C5364" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> <!-- Baris 0: Custom Title Bar -->
+                <RowDefinition Height="Auto"/> <!-- Baris 1: Form Config -->
+                <RowDefinition Height="Auto"/> <!-- Baris 2: Tombol Start -->
+                <RowDefinition Height="*"/>    <!-- Baris 3: Area Log (Fleksibel memanjang) -->
+            </Grid.RowDefinitions>
+
+            <!-- 1. CUSTOM TITLE BAR (Bisa di-drag) -->
+            <Grid Grid.Row="0" Margin="0,0,0,15" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Judul Aplikasi -->
+                <TextBlock Text="ScraperGUI" Foreground="#A0E0FF" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False"/>
+                
+                <Button Grid.Column="1" Content="—" Width="30" Height="30" Foreground="White" Background="Transparent" 
+                        BorderThickness="0" FontSize="14" FontWeight="Bold" Cursor="Hand" Click="BtnMinimize_Click" Margin="0,0,5,0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                                            <!-- Margin bottom diatur sedikit agar garis minimize agak ke tengah -->
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <!-- Efek hover putih transparan -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#33FFFFFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <!-- Tombol Exit Minimalis -->
+                <Button Grid.Column="2" Content="✕" Width="30" Height="30" Foreground="#FF5E62" Background="Transparent" 
+                        BorderThickness="0" FontSize="16" FontWeight="Bold" Cursor="Hand" Click="BtnExit_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <!-- Efek hover merah transparan -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#33FF5E62"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <Border Grid.Row="1" Background="#1AFFFFFF" CornerRadius="10" 
+                    BorderBrush="#33FFFFFF" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Target URL:" Foreground="#A0E0FF" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <!-- BorderThickness="0" untuk membuang border -->
+                    <TextBox x:Name="InputUrl" Text="https://jsonplaceholder.typicode.com/todos/1" 
+                             Background="#33000000" Foreground="White" BorderThickness="0" Padding="8"/>
+                    
+                    <TextBlock Text="Header:" Foreground="#A0E0FF" FontWeight="Bold" Margin="0,15,0,5"/>
+                    <TextBox x:Name="InputHeader" Text="User-Agent:Mozilla/5.0" 
+                             Background="#33000000" Foreground="White" BorderThickness="0" Padding="8"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 3. TOMBOL DENGAN ANIMASI HOVER -->
+            <Button x:Name="BtnToggle" Grid.Row="2" Content="START SCAN" Height="50" 
+                    Foreground="White" FontSize="16" FontWeight="Bold" Cursor="Hand" Click="BtnToggle_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <!-- Tampilan Default (Hijau Muda) -->
+                        <Setter Property="Background" Value="#66BB6A"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <!-- Warna Dasar -->
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="25"/>
+                                        <!-- Lapisan Gelap Transparan (Mula-mula Opacity 0) -->
+                                        <Border x:Name="HoverOverlay" Background="#26000000" CornerRadius="25" Opacity="0"/>
+                                        
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    
+                                    <!-- Animasi memunculkan lapisan gelap saat Hover -->
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="HoverOverlay" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.15"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="HoverOverlay" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.15"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- 4. AREA LOG (Glassmorphism) -->
+            <Border Grid.Row="3" Background="#1AFFFFFF" CornerRadius="10" BorderBrush="#33FFFFFF" BorderThickness="1" Margin="0,20,0,0" Padding="10">
+                <ListBox x:Name="ListResults" Background="Transparent" BorderThickness="0" Foreground="White" MouseDoubleClick="ListResults_MouseDoubleClick"/>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>
