@@ -1,0 +1,42 @@
+# =========================
+# Build & Compile Results
+# =========================
+[Bb]in/
+[Oo]bj/
+
+# Folder hasil publish (kalau nanti aplikasinya di-build jadi .exe final)
+[Pp]ublish/
+[Oo]ut/
+TestResults/
+
+# =========================
+# Visual Studio & IDEs
+# =========================
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# =========================
+# OS Generated Files
+# =========================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Mac (kalau kebetulan dibuka di Mac)
+.DS_Store
+
+# =========================
+# Lain-lain
+# =========================
+*.log
+*.cache
+appsettings.Development.json
