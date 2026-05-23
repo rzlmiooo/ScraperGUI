@@ -17,3 +17,4 @@ D:\kuliah\Projects\ScraperGUI\obj\Debug\net10.0-windows\refint\ScraperGUI.dll
 D:\kuliah\Projects\ScraperGUI\obj\Debug\net10.0-windows\ScraperGUI.pdb
 D:\kuliah\Projects\ScraperGUI\obj\Debug\net10.0-windows\ScraperGUI.genruntimeconfig.cache
 D:\kuliah\Projects\ScraperGUI\obj\Debug\net10.0-windows\ref\ScraperGUI.dll
+D:\kuliah\Projects\ScraperGUI\obj\Debug\net10.0-windows\ScraperGUI.sourcelink.json
