@@ -32,7 +32,7 @@
                 </Grid.ColumnDefinitions>
                 
                 <!-- Judul Aplikasi -->
-                <TextBlock Text="ScraperGUI" Foreground="#A0E0FF"  FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False"/>
+                <TextBlock Text="ScraperGUI" Foreground="#A0E0FF" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False"/>
                 
                 <Button Grid.Column="1" Content="—" Width="30" Height="30" Foreground="White" Background="Transparent" 
                         BorderThickness="0" FontSize="14" FontWeight="Bold" Cursor="Hand" Click="BtnMinimize_Click" Margin="0,0,5,0">
@@ -59,7 +59,7 @@
                 </Button>
 
                 <!-- Tombol Exit Minimalis -->
-                <Button Grid.Column="2" Content="✕" Width="30" Height="30" Foreground="#FF5E62" Background="Transparent" 
+                <Button  Grid.Column="2" Content="✕" Width="30" Height="30" Foreground="#FF5E62" Background="Transparent" 
                         BorderThickness="0" FontSize="16" FontWeight="Bold" Cursor="Hand" Click="BtnExit_Click">
                     <Button.Style>
                         <Style TargetType="Button">
@@ -86,32 +86,32 @@
             <Border Grid.Row="1" Background="#1AFFFFFF" CornerRadius="10" 
                     BorderBrush="#33FFFFFF" BorderThickness="1" Padding="15" Margin="0,0,0,20">
                 <StackPanel>
-                    <TextBlock Text="Target URL:" Foreground="#A0E0FF" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock Text="Target URL:" Foreground="#A0E0FF" FontWeight="Bold" Margin="0,0,0,10"/>
                     <!-- BorderThickness="0" untuk membuang border -->
-                    <TextBox x:Name="InputUrl" Text="https://jsonplaceholder.typicode.com/todos/1" 
+                    <TextBox x:Name="InputUrl" Text="https://jsonplaceholder.typicode.com/todos/1" FontWeight="Light"
                              Background="#33000000" Foreground="White" BorderThickness="0" Padding="8"/>
                     
-                    <TextBlock Text="Header:" Foreground="#A0E0FF" FontWeight="Bold" Margin="0,15,0,5"/>
+                    <TextBlock Text="Header:" Foreground="#A0E0FF" FontWeight="Bold" Margin="0,15,0,10"/>
                     <TextBox x:Name="InputHeader" Text="User-Agent:Mozilla/5.0" 
-                             Background="#33000000" Foreground="White" BorderThickness="0" Padding="8"/>
+                             Background="#33000000" Foreground="White" FontWeight="Light" BorderThickness="0" Padding="8"/>
                 </StackPanel>
             </Border>
 
             <!-- 3. TOMBOL DENGAN ANIMASI HOVER -->
-            <Button x:Name="BtnToggle" Grid.Row="2" Content="START SCAN" Height="50" 
-                    Foreground="White" FontSize="16" FontWeight="Bold" Cursor="Hand" Click="BtnToggle_Click">
+            <Button x:Name="BtnToggle" Grid.Row="2" Content="Start Scanning" Height="50" 
+                    Foreground="#0F2027" FontSize="20" FontWeight="Bold" Cursor="Hand" Click="BtnToggle_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <!-- Tampilan Default (Hijau Muda) -->
-                        <Setter Property="Background" Value="#66BB6A"/>
+                        <Setter Property="Background" Value="#A0E0FF"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
                                         <!-- Warna Dasar -->
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="25"/>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="15"/>
                                         <!-- Lapisan Gelap Transparan (Mula-mula Opacity 0) -->
-                                        <Border x:Name="HoverOverlay" Background="#26000000" CornerRadius="25" Opacity="0"/>
+                                        <Border x:Name="HoverOverlay" Background="#26000000" CornerRadius="15" Opacity="0"/>
                                         
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
