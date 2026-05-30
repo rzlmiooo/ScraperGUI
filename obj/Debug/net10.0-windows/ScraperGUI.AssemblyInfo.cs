@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScraperGUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97061a3e618b764cea562a65e6b50fcb82fc6fee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19f4e3d955e7a25548979d3f1c217e466b989892")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScraperGUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScraperGUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -37,8 +37,8 @@ public partial class MainWindow : Window
             _cts?.Cancel(); // Tarik pelatuk pembatalan
             _isRunning = false;
             
-            BtnToggle.Content = "START";
-            BtnToggle.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(76, 175, 80)); // Hijau
+            BtnToggle.Content = "Start Scanning";
+            BtnToggle.Background = (System.Windows.Media.Brush)new System.Windows.Media.BrushConverter().ConvertFrom("#66BB6A")!;            
             InputUrl.IsEnabled = true;
             InputHeader.IsEnabled = true;
         }
@@ -48,8 +48,8 @@ public partial class MainWindow : Window
             _isRunning = true;
             _cts = new CancellationTokenSource(); // Buat remote control baru
             
-            BtnToggle.Content = "STOP";
-            BtnToggle.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(244, 67, 54)); // Merah
+            BtnToggle.Content = "Stop";
+            BtnToggle.Background = (System.Windows.Media.Brush)new System.Windows.Media.BrushConverter().ConvertFrom("#f44336")!;
             InputUrl.IsEnabled = false; // Kunci input saat jalan
             InputHeader.IsEnabled = false;
 

@@ -103,7 +103,7 @@
                 <Button.Style>
                     <Style TargetType="Button">
                         <!-- Tampilan Default (Hijau Muda) -->
-                        <Setter Property="Background" Value="#A0E0FF"/>
+                        <Setter Property="Background" Value="#66BB6A"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="Button">
